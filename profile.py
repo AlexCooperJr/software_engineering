@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# CloudLab Profile: Ubuntu 24.04 (ARM) on Utah nodes with Docker
+# CloudLab Profile: Ubuntu 22.04 (ARM) on Utah nodes with Docker
 #
 
 import geni.portal as portal
@@ -21,10 +21,10 @@ request = pc.makeRequestRSpec()
 node = request.RawPC("node1")
 node.hardware_type = params.nodeType
 
-# Correct ARM Ubuntu 24.04 image URN
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU24-64-ARM"
+# ✅ Use a known-good ARM image at Utah
+node.disk_image = "urn:publicid:IDN+utah.cloudlab.us+image+emulab-ops:UBUNTU22-64-ARM"
 
-# Install Docker automatically
+# Install Docker
 node.addService(pg.Execute(shell="bash", command="""sudo apt-get update -y &&
     sudo apt-get install -y ca-certificates curl gnupg &&
     sudo install -m 0755 -d /etc/apt/keyrings &&
