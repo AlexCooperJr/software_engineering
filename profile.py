@@ -1,5 +1,5 @@
 #
-# CloudLab Profile: Ubuntu 24.04 on Utah ARM nodes with Docker
+# CloudLab Profile: Ubuntu 24.04 (ARM) on Utah nodes with Docker
 #
 
 import geni.portal as portal
@@ -11,7 +11,7 @@ pc.defineParameter(
     "Hardware Type",
     portal.ParameterType.STRING,
     "ampere",
-    longDescription="Select ARM-based node type available at Utah (e.g., ampere or ampere-altra)."
+    longDescription="Select ARM-based node type at Utah (e.g., ampere or ampere-altra)."
 )
 params = pc.bindParameters()
 
@@ -20,8 +20,8 @@ request = pc.makeRequestRSpec()
 node = request.RawPC("node1")
 node.hardware_type = params.nodeType
 
-# ✅ Correct URN for Ubuntu 24.04 (Noble Numbat)
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:ubuntu-24-04"
+# ✅ Correct ARM Ubuntu 24.04 image URN
+node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU24-64-ARM"
 
 # Install Docker automatically
 node.addService(pg.Execute(shell="bash", command="""sudo apt-get update -y &&
