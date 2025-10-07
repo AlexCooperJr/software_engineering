@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # CloudLab Profile: Ubuntu 24.04 (ARM) on Utah nodes with Docker
 #
@@ -20,7 +21,7 @@ request = pc.makeRequestRSpec()
 node = request.RawPC("node1")
 node.hardware_type = params.nodeType
 
-# ✅ Correct ARM Ubuntu 24.04 image URN
+# Correct ARM Ubuntu 24.04 image URN
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU24-64-ARM"
 
 # Install Docker automatically
